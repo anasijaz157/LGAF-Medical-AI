@@ -215,11 +215,18 @@ if uploaded:
     st.info(f"**{CLASS_LABELS[class_pred]}**")
     st.progress(float(class_probs[class_pred]))
 
-    st.subheader("📊 Confidence Scores")
-    st.bar_chart({
-        "Risk": risk_probs,
-        "Classification": class_probs
-    })
+    st.subheader("📊 Detailed Confidence Breakdown")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("##### 🩺 Risk Levels")
+        for label, prob in zip(RISK_LABELS, risk_probs):
+            st.write(f"**{label}**: {prob * 100:.1f}%")
+            st.progress(float(prob))
+    with col2:
+        st.markdown("##### 🧬 Tumor Types")
+        for label, prob in zip(CLASS_LABELS, class_probs):
+            st.write(f"**{label.capitalize()}**: {prob * 100:.1f}%")
+            st.progress(float(prob))
 
     # =====================================================
     # Footer
