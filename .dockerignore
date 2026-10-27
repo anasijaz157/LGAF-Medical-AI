@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.venv1/
+pip-log.txt
+pip-delete-this-directory.txt
+.idea/
+.vscode/
+*.swp
+*.bak
+.DS_Store
